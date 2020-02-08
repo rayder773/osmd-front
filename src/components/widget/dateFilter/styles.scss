@@ -1,0 +1,45 @@
+@import '../../../assets/global.scss';
+
+
+.date-filter-container {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+
+  .date-filter-date, .date-filter-clear{
+    display: inline-block;
+    margin: 0 0.5vw;
+    border-radius: 20px;
+    background-color: $color_white;
+    height: 32px;
+    line-height: 32px;
+    min-width: 32px;
+    text-align: center;
+  }
+  .date-filter-date{
+    label{
+      display: inline-block;
+      padding: 0 5px 0 15px;
+      color: $color_gray;
+    }
+    .ant-calendar-picker{
+      input.ant-input{
+        border-width: 0;
+        border-radius: 20px;
+        &:hover, &:focus{
+          border-right-width: 0 !important;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+  .date-filter-clear{
+    cursor: pointer;
+    svg {
+      fill: #bfbfbf;
+    }
+    &:hover {
+
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@mixin button($color) {
+  @if $color != white and $color != green {
+    @error "Color (#{$color}) must be either white or green.";
+  }
+  height: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 30px;
+  font-size: 16px;
+  outline: 0px solid transparent;
+  border-style: solid;
+  border-width: 1px;
+  min-width: 200px;
+
+  @if $color == white {
+    border-color: #9F9F9F;
+    background: $color_white;
+    color: $color_gray;
+    &:hover {
+      background: darken(#9F9F9F, 5%);
+      color: darken($color_gray,40%);
+    }
+  }
+  @if $color == green {
+    border-color: $color_green;
+    background: $color_green;
+    color: $color_white;
+    &>span{
+      color: $color_white;
+    }
+    &:hover {
+      border-color: darken($color_accept, 5%);
+      background: darken($color_accept, 5%);
+    }
+  }
+
+
+}

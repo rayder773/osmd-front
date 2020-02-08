@@ -1,0 +1,45 @@
+@import "../../../assets/global";
+
+.owners {
+    @extend %table-header-shared;
+
+    .positive {
+        color: $color_green;
+    }
+
+    .negative {
+        color: $color_red;        
+    }
+
+    .ant-table{
+        border: none;
+    }
+
+    .total {
+        color: $color_gray;
+    }
+
+    .spacer {
+        margin: 0 6px;        
+    }
+
+    .status {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 0;
+        padding: 0 18px;
+    }
+
+    .right-align {
+        text-align: right;
+    }
+
+    .table {
+        margin-top: 20px;        
+    }    
+}

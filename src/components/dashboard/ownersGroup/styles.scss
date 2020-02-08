@@ -1,0 +1,12 @@
+.owner-groups {
+    background: #FBFBFB;
+    color: lighten(gray, 20%);
+    margin: 0;
+    position: relative;
+    left: -8px;
+
+    .ant-table-small > .ant-table-content > .ant-table-body > table > .ant-table-tbody > tr > td {
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+}

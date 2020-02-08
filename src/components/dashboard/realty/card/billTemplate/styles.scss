@@ -1,0 +1,131 @@
+@import '../../../../../assets/global.scss';
+
+.bill-template {
+  width: 95%;
+  margin: 0 auto;
+
+  h2 {
+    text-align: center;
+    color: $color_gray;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  .bill-template-header {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+
+    label {
+      padding: 0 10px 0 0;
+      color: black;
+    }
+
+    span {
+      color: $color_gray;
+      margin-bottom: 5px;
+    }
+
+    padding-bottom: 20px;
+  }
+
+  .bill-template-list {
+    // width: 95%;
+    // margin: 0 auto;
+
+    img {
+      width: 25px;
+    }
+
+    .ant-table {
+      border: 0;
+
+      .bill-template-th-colspan {
+        position: absolute;
+      }
+
+      .ant-table-thead>tr>th {
+        color: $color_gray;
+        font-weight: normal;
+      }
+
+      .ant-table-content>.ant-table-body>table {
+
+        &>.ant-table-tbody>tr>td,
+        &>.ant-table-thead>tr>th {
+          &:last-child {
+            padding-right: 20px;
+          }
+        }
+
+        &>.ant-table-tbody>tr>td {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .bill-template-footer {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    span {
+      font-family: Roboto;
+      color: $color_gray;
+      font-size: 14px;
+      line-height: 16px;
+    }
+
+  }
+}
+
+.bill-template-header-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.bill-template-title-name {
+  margin-top: 59px;
+  margin-bottom: 10px;
+  font-family: Roboto;
+}
+
+.bill-template-title-period {
+  text-align: center;
+  margin-bottom: 30px;
+  color: black;
+}
+
+.bill-template-formbill-btn {
+  margin-top: 20px;
+  @include button(green);
+  width: 280px;
+  height: 60px;
+  margin-top: 0;
+}
+
+.bill-template-formbill-btn-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 55px;
+}
+
+.bill-template-footer-price {
+  font-size: 48px;
+  font-family: Roboto;
+  color: $color_gray;
+  line-height: 56px;
+}
+
+.bill-template-footer-divider {
+  background: #E2E2E2;
+  height: 1px;
+  width: 212px;
+  margin-bottom: 5px;
+}
+

@@ -1,0 +1,10 @@
+const realtyCardTypes = {
+    GET_DATA: 'GET_REALTY_CARD_DATA',
+    IS_FETCHING: 'IS_FETCHING',
+    IS_DATA_PROCESSING: 'IS_DATA_PROCESSING',
+    GOT_BILL_TEMPLATE: 'GOT_BILL_TEMPLATE',
+    BILL_CLOSED: 'BILL_CLOSED',
+    SAVE_BILL: 'SAVE_BILL',
+};
+
+export default realtyCardTypes;

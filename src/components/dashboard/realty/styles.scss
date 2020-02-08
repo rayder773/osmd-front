@@ -1,0 +1,19 @@
+@import '../../../assets/global.scss';
+
+.realty {
+    @extend %table-header-shared;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 18px;
+    }
+
+    .ant-table{
+        border: none;
+    }
+
+    .ant-table-row {
+        cursor: pointer;
+    }
+}

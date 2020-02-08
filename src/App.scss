@@ -1,0 +1,11 @@
+@import './assets/global.scss';
+
+.App {
+  // text-align: center;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: $color_body;
+  padding: 10px;
+  
+}

@@ -1,0 +1,20 @@
+@import '../../../../assets/global.scss';
+
+.meters-modal-button {
+    min-height: 28px;
+    border: 1px solid #F2F2F2;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: $color_white;    
+}
+
+.meters-declined-button {
+    color: $color_decline;
+    font-weight: bold;
+}
+
+.meters-accepted-button {
+    color: $color_accept;
+    font-weight: bold;
+    max-width: 100px;
+}

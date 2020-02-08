@@ -1,0 +1,107 @@
+@import '../../../../assets/global.scss';
+
+.meters-review {      
+    .ant-modal-header{
+        border-bottom: none;
+        .ant-modal-title{
+            text-align: center;
+        }
+    }
+    .modal-review {
+        width: 800px !important;
+        //max-width: $max_width;
+    }
+
+
+    .meters-review-modal-content {
+        font-family: "Roboto";
+        padding-bottom: 30px;
+
+        .meters-wrapper {
+
+            .meters-values-holder{
+                .ant-col:last-child{
+                    border-left: 1px solid $color_lightgray;
+                }
+                color: $color_gray;
+                .title{
+                    margin-top: 10px;
+                    display: inline-block;
+                    text-align: center;
+                    img {
+                        width: 50px;
+                    }
+                }
+                .desc{
+                    padding: 0 0 10px 50px;
+                }
+                .value{
+                    padding: 0 0 0 50px;
+                    font-size: 48px;
+                    line-height: 48px;
+                }
+            }
+
+            .status-string {
+                margin: 20px 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                // position: relative;
+                // top: -70px;
+                width: 100%;
+                height: 70px;
+                background: #F6F6F6;
+                border-radius: 35px;
+                color: $color_gray;
+                opacity: 0.9;
+                padding: 0 20px 0 5px;
+
+                .payer-info {
+                    display: flex;
+                    align-items: center;
+                    .payer-avatar {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        background: $color_white;
+                    }
+                    .payer-name {
+                        :first-child {
+                            font-size: 18px;
+                            line-height: 21px;
+                            font-weight: bold;
+                            color: black;
+                        }
+
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: column;
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                        margin-left: 30px;
+                    }
+                }
+
+                .profile-link {
+                    display: flex;
+                    align-items: center;
+                    font-size: 14px;
+                    line-height: 14px;
+                }
+            }
+
+            .meters-image {
+                width: 100%;
+                object-fit: cover;
+                // position: absolute;
+                max-height: 450px;
+            }
+
+
+        }
+
+    }
+
+}

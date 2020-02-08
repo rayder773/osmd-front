@@ -1,0 +1,32 @@
+@import '../../../../../assets/global.scss';
+
+.review-modal-footer {
+    .controls {
+        margin: auto;
+        text-align: center;
+        margin-top: 10px;
+        .input-comment{
+            width: 416px;
+            height: 100px;
+
+            background: #F6F6F6;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .decline {
+            @include button(white);
+            background: $color_white;
+            margin-right: 16px;
+            &:hover {
+                background: $color_decline;
+            }
+        }
+        .accept {
+            @include button(green);
+        }
+        a{
+            display: block;
+            text-decoration: underline;
+        }
+    }  
+}

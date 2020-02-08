@@ -1,0 +1,114 @@
+@import '../../assets/global.scss';
+
+.header {
+    color: black;
+    padding-bottom: 35px;
+    width: 100vw;
+    max-width: $max_width;
+
+    .top-wrapper {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .lang-user-block {
+        display: flex;
+
+        :first-child.lang-switch {
+            margin-right: 50px;
+        }
+
+        .lang-switch {
+            display: flex;
+            color: $color_gray;            
+            .active {
+                color: $color_green;
+            }
+    
+            :first-child {                
+                margin-right: 10px;
+                cursor: pointer;
+            }
+            :last-child {
+                cursor: pointer;
+            }
+        }  
+        
+        .user-block {            
+            :first-child {
+                font-size: 16px;  
+                font-weight: bold;          
+            }
+            :last-child {
+                font-size: 10px;
+                color: $color_gray;
+                
+            }  
+        }
+        .user-login-block {
+            display: flex;
+            .login-block {
+                display: flex;                                
+                align-items: center;
+                border-left: 1px solid $color_gray;
+                margin-left: 10px;                
+                padding-left: 10px;
+            }    
+        }
+            
+    }
+    
+    .control-wrapper {
+        margin-top: 20px;
+        display: flex;        
+    }
+
+    .logo-block {        
+        display: flex;
+        align-items: baseline;
+        :first-child {
+            margin-right: 18px;    
+            cursor: pointer;        
+        }
+        :last-child {
+            position: relative;
+            top: 6px;
+            cursor: pointer;
+        }
+    }
+    
+    ul.nav-menu {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style: none;
+
+        li {
+            margin-right: 10px;
+            min-width: 124px;
+            &.nav-owners {
+                min-width: 114px;
+            }
+            &.nav-bills, &.nav-payments, &.nav-requests {
+                min-width: 104px;
+            }
+        }
+    }
+
+    .nav-menu {
+        .nav-name {
+            font-size: 16px;
+            color: black;
+        }
+        .nav-descr {
+            font-size: 10px;
+            color: $color_gray;
+        }
+        .active {
+            .nav-name{
+                color: $color_green;
+            }
+        }
+    }
+}

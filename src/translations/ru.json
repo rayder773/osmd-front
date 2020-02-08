@@ -1,0 +1,22 @@
+{
+    "header.balance": "Баланс",
+    "header.balance.descr": "Баланс по объектам",
+    "header.payments": "Оплаты",
+    "header.payments.descr": "Оплаты за услуги",
+    "header.requests": "Заявки",
+    "header.requests.descr": "Заявки на услуги",
+    "header.meters": "Показания",
+    "header.meters.descr": "Информация со счетчиков",
+    "header.objects": "Объекты",
+    "header.objects.descr": "Список недвижимости",
+    "header.bills": "Счета",
+    "header.bills.descr": "Реестр счетов",
+    "header.logout": "ВЫЙТИ",
+    "db.bill.paymentStatus.paid": "Оплачен",
+    "db.bill.paymentStatus.nopaid": "Не Оплачен",
+    "db.bill.paymentStatus.semipaid": "Частично оплачен",
+    "db.bill.status.draft": "Черновик",
+    "db.bill.status.ready": "Сформирован",
+    "db.bill.status.sent": "Отправлен пользователю",
+    "db.bill.status.closed": "Закрыт по бухгалтерии"
+}

@@ -1,0 +1,22 @@
+{
+    "header.balance": "Баланс",    
+    "header.balance.descr": "Баланс по об'єктам",
+    "header.payments": "Оплати",
+    "header.payments.descr": "Оплати за послгуи",
+    "header.requests": "Заявки",
+    "header.requests.descr": "Заявки на послуги",
+    "header.meters": "Показники",
+    "header.meters.descr": "Інформація з лічільніків",
+    "header.objects": "Об'єкти",
+    "header.objects.descr": "Список недвижимости",
+    "header.bills": "Рахунки",
+    "header.bills.descr": "Реестр рахункiв",
+    "header.logout": "ВИХIД",
+    "db.bill.paymentStatus.paid": "Оплачено",
+    "db.bill.paymentStatus.nopaid": "Не оплачено",
+    "db.bill.paymentStatus.semipaid": "Частково оплачений",
+    "db.bill.status.draft": "Черновик",
+    "db.bill.status.ready": "Сформовано",
+    "db.bill.status.sent": "Відправлений користувачеві",
+    "db.bill.status.closed": "Закрито по бухгалтерії"
+}

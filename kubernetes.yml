@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin
+  namespace: bm-ossystem-ua-${ENV}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin
+  template:
+    metadata:
+      labels:
+        app: admin
+    spec:
+      containers:
+        - image: ${ADMIN_IMAGE_NAME}
+          imagePullPolicy: Always
+          name: admin

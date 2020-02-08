@@ -1,0 +1,78 @@
+@import '../../../assets/global.scss';
+
+.meters {    
+    @extend %table-header-shared;    
+     
+    a,
+    button {
+        cursor: pointer;
+    }
+
+    .meters-header-container {       
+        height: 60px;
+        display: flex;
+        align-items: center;
+    }
+
+    .meters-header {
+        margin-left: 18px;
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+
+    .meters-header-editional {
+        margin-left: 5px;
+        font-size: 16px;
+        color: $color_gray;
+        font-weight: 500;
+    }
+
+    .meters-footer {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-right: 2%;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        color: #000000;
+        cursor: pointer;
+    }
+
+    .meters-date-col {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+    }
+
+    .ant-modal {      
+        max-width: 900px;
+    }
+
+    .meters-modal-main-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .meters-modal-footer-person-card {
+        width: 100%;
+        height: ao;
+        height: auto;
+        max-width: 309px;
+        height: 192px;
+        background: #F0F0F0;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+}
