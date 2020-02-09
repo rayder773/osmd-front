@@ -1,6 +1,6 @@
 /* eslint no-mixed-operators: "off" */
 import realtyCardTypes from '../types/realtyCard';
-import {BILL_TEMPLATE_SUCCESS} from "../types/billTemplateTypes";
+import {BILL_TEMPLATE_SUCCESS, BILL_TEMPLATE_SUCCESS_STATUS_READY} from "../types/billTemplateTypes";
 import { showNotification } from './errors';
 import { errorCodes } from '../../constants/errorMessages';
 
@@ -129,7 +129,7 @@ export const saveBillForRealtyCard = bill => {
     });
 
     dispatch({
-      type: BILL_TEMPLATE_SUCCESS,
+      type: BILL_TEMPLATE_SUCCESS_STATUS_READY,
       payload: response.data.result
     });
     console.warn('getRealtyCardData >>> ', bill.appartment_Id);

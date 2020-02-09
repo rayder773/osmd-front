@@ -1,24 +1,34 @@
 import * as billTemplateTypes from "../types/billTemplateTypes";
+import {
+    BILL_TEMPLATE_FAILURE,
+    BILL_TEMPLATE_SUCCESS_STATUS_DRAFT,
+    BILL_TEMPLATE_SUCCESS_STATUS_READY
+} from "../types/billTemplateTypes";
+import billStatusTypes from "../../constants/billStatusTypes";
 import {getBillTemplateForRealtyCardAPI, getCreatedBillTemplateForRealtyCardAPI, requestAdmin} from "../../api";
 import {showNotification} from "./errors";
 import {errorCodes} from "../../constants/errorMessages";
-import {MODAL_REVIEW_REQUEST_FAILURE} from "../types/modalReview";
 
-export const getBillTemplate = (id, func) => {
-    let payload = [], response;
+export const getBillTemplate = (id, status) => {
+    let payload = [],
+        response = {},
+        billStatus = '';
 
     return async dispatch => {
         dispatch({
             type: billTemplateTypes.BILL_TEMPLATE_REQUEST,
         });
 
+
         try {
-            switch (func) {
-                case 'startToCreate':
+            switch (status) {
+                case billStatusTypes.DRAFT:
                     response = await requestAdmin(getBillTemplateForRealtyCardAPI, {id: id});
+                    billStatus = BILL_TEMPLATE_SUCCESS_STATUS_DRAFT;
                     break;
-                case 'created':
+                case billStatusTypes.READY:
                     response = await requestAdmin(getCreatedBillTemplateForRealtyCardAPI, {id: id});
+                    billStatus = BILL_TEMPLATE_SUCCESS_STATUS_READY;
                     break;
             }
 
@@ -33,7 +43,7 @@ export const getBillTemplate = (id, func) => {
                     message: (response && response.message) || '',
                 })
             );
-            // dispatch({type: MODAL_REVIEW_REQUEST_FAILURE});
+            dispatch({type: BILL_TEMPLATE_FAILURE});
             return;
         }
 
@@ -44,7 +54,7 @@ export const getBillTemplate = (id, func) => {
         }
 
         return dispatch({
-            type: billTemplateTypes.BILL_TEMPLATE_SUCCESS,
+            type: billStatus,
             payload,
         });
     }

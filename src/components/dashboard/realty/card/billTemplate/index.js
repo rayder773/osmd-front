@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Table} from 'antd';
 import {serviceTypes, SeviceImage} from '../../../../../dataModels/metersData';
@@ -173,7 +174,7 @@ const BillTemplate = ({billData, onBillSave, isSelected}) => {
             </div>
             <div className="bill-template-footer">
                 <div className="bill-template-footer-price">
-                    {formatCurrency(billSelectedSumm, '')}
+                    {formatCurrency(!isSelected ? billData.value : billSelectedSumm, '')}
                     <span>грн</span>
                 </div>
                 <div className="bill-template-footer-divider"/>
@@ -199,4 +200,8 @@ BillTemplate.propTypes = {
 
 BillTemplate.defaultProps = {};
 
-export default BillTemplate;
+const mapStateToProps = state => ({
+    isSelected: state.billTemplate.isSelected,
+});
+
+export default connect(mapStateToProps)(BillTemplate);

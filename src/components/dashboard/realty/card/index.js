@@ -1,42 +1,31 @@
 /* eslint-disable no-nested-ternary */
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
-import {Table, Input, Breadcrumb, Row, Col, Card, Divider, Radio, Spin, Modal } from 'antd';
+import {Breadcrumb, Card, Col, Divider, Modal, Radio, Row, Spin} from 'antd';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import Button from 'antd/lib/button';
 import {
     getRealtyCardData,
-    getBillTemplateForRealtyCard,
-    cancelBill,
     saveBillForRealtyCard,
 } from '../../../../store/actions/realtyCard';
-import {SeviceImage, serviceTypes, getMetersImage, mapToNormalData} from '../../../../dataModels/metersData';
-import {formatCurrency} from '../../../../helpers';
-import {
-    formatPhone,
-    formatBorrow,
-    filterEvents,
-} from '../helpers'
+import {serviceTypes, SeviceImage} from '../../../../dataModels/metersData';
+import {filterEvents, formatBorrow, formatPhone,} from '../helpers'
 import './styles.scss';
 
 import headerBg from '../../../../assets/images/realty-card-header-bg.svg';
 import Event from './Event';
-// import MetersReview from '../../../dashboard/meters/metersReview';
 import BillTemplate from './billTemplate';
 import DateFilter from '../../../widget/dateFilter';
 import {
     REALTY_EVENT_TYPE_ALL,
-    REALTY_EVENT_TYPE_METERS,
     REALTY_EVENT_TYPE_BILLS,
-    REALTY_EVENT_TYPE_PAYMENTS,
     REALTY_EVENT_TYPE_DEMANDS,
+    REALTY_EVENT_TYPE_METERS,
+    REALTY_EVENT_TYPE_PAYMENTS,
 } from '../../../../constants/realtyEventTypes';
-// import ModalReview from '../../meters/modalReview';
+import billStatusTypes from "../../../../constants/billStatusTypes";
 import {getModalReviewData} from '../../../../store/actions/modalReview';
 import {getBillTemplate} from '../../../../store/actions/billTemplate'
-
-const {Search} = Input;
 
 const renderEvents = (events, openModal) => {
     if (!events || events.length === 0) {
@@ -82,23 +71,16 @@ const RealtyCard = props => {
         isFetching,
         isDataProcessing,
         billData,
-        getBillTemplateForRealtyCard,
-        // cancelBill,
         saveBillForRealtyCard,
         getRealtyCardData,
-        getModalReviewData,
-        modalViewData,
         getBillTemplate
     } = props;
     const [cardEventFilter, setCardFilter] = useState(REALTY_EVENT_TYPE_ALL);
     const [cardEventDates, setCardDates] = useState({from: null, to: null});
     const [isVisible, setIsVisible] = useState(false);
-    const [isSelected, setIsSelected] = useState(true);
-    // const [modalData, setModalData] = useState(null);
 
     useEffect(() => {
         getRealtyCardData(realtyId);
-        // getBillTemplate(realtyId, 'startToCreate');
     }, []);
     console.log('got realty card data', cardData, isFetching);
 
@@ -109,36 +91,20 @@ const RealtyCard = props => {
         setCardDates(filter);
     };
 
-    const onStartToCreateBillTemplate = () => {
-        getBillTemplate(realtyId, 'startToCreate');
+    const onDraftBillTemplate = () => {
+        getBillTemplate(realtyId, billStatusTypes.DRAFT);
         setIsVisible(true);
-        setIsSelected(true);
     };
 
-    const onCreatedBillTemplate = e => {
-        getBillTemplate(e.id, 'created');
+    const onReadyBillTemplate = e => {
+        getBillTemplate(e.id, billStatusTypes.READY);
         setIsVisible(true);
-        setIsSelected(false);
     };
 
-    // const onOpenBillTemplate = () => {
-    //     getBillTemplateForRealtyCard(realtyId);
-    //     setIsVisible(true);
-    // };
     const onBillSave = bill => saveBillForRealtyCard(bill);
 
     const onCloseBillTemplate = e => setIsVisible(false);
-    // const onCloseBillTemplate = e => setIsVisible(false);
 
-    // const openModal = event => {
-    //     // if (event.type !== REALTY_EVENT_TYPE_METERS) {
-    //     //     return;
-    //     // }
-    //
-    //     // getModalReviewData(event.id);//TODO
-    //     // getBillTemplateForRealtyCard(event.id);
-    //     // getBillTemplateForRealtyCard(event.id);
-    // };
 
     return (
         <div className={`realty-card ${isFetching ? 'loading' : ''}`}>
@@ -237,7 +203,7 @@ const RealtyCard = props => {
                                 </Col>
                             </Row>
                             <div className="realty-card-info-action">
-                                <Button className="realty-card-info-button" onClick={onStartToCreateBillTemplate}>
+                                <Button className="realty-card-info-button" onClick={onDraftBillTemplate}>
                                     Сформировать счет
                                 </Button>
                             </div>
@@ -257,24 +223,23 @@ const RealtyCard = props => {
                         </Radio.Group>
                         <DateFilter onChange={onChangeDateFilter}/>
                         {cardData.events &&
-                        renderEvents(cardData.events.filter(filterEvents(cardEventFilter, cardEventDates)), onCreatedBillTemplate)}
-                        {/*<ModalReview*/}
-                        {/*  onClose={() => {*/}
-                        {/*    dispatch(getRealtyCardData(realtyId));*/}
-                        {/*  }}*/}
+                        renderEvents(cardData.events.filter(filterEvents(cardEventFilter, cardEventDates)), onReadyBillTemplate)}
                         />
                     </Col>
                 </Row>
             )}
             {billData && (
-              <Modal
-                  visible={isVisible}
-                  onCancel={onCloseBillTemplate}
-                  footer={null} width={1486}
-                  style={{ borderRadius: '20px' }}
-              >
-                <BillTemplate billData={billData} onBillSave={onBillSave} isSelected={isSelected} />
-              </Modal>
+                <Modal
+                    visible={isVisible}
+                    onCancel={onCloseBillTemplate}
+                    footer={null} width={1486}
+                    style={{borderRadius: '20px'}}
+                >
+                    <BillTemplate
+                        billData={billData}
+                        onBillSave={onBillSave}
+                    />
+                </Modal>
             )}
             <div className="header">
                 <div/>
@@ -291,17 +256,13 @@ const mapStateToProps = state => ({
     isFetching: state.realtyCard.isFetching,
     isDataProcessing: state.realtyCard.isDataProcessing,
     cardData: state.realtyCard.data,
-    // billData: state.realtyCard.bill,
     billData: state.billTemplate.billData,
 });
 
 const mapDispatchToProps = {
-    getBillTemplateForRealtyCard,
-    cancelBill,
     saveBillForRealtyCard,
     getRealtyCardData,
-    getModalReviewData,
     getBillTemplate
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(RealtyCard);
