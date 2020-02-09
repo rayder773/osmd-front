@@ -432,8 +432,8 @@ export async function getBillTemplateForRealtyCardAPI(params) {
 export async function getCreatedBillTemplateForRealtyCardAPI(params) {
   const genericParams = {
     ...params,
-    action: 'serviceValue',
-    method: 'realtyBillTemplate',
+    action: 'bill',
+    method: 'getBillTemplate',
   };
 
   return genericRequest({id: params.id, events: params.events}, genericParams);

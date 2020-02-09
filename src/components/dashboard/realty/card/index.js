@@ -93,10 +93,12 @@ const RealtyCard = props => {
     const [cardEventFilter, setCardFilter] = useState(REALTY_EVENT_TYPE_ALL);
     const [cardEventDates, setCardDates] = useState({from: null, to: null});
     const [isVisible, setIsVisible] = useState(false);
-    const [modalData, setModalData] = useState(null);
+    const [isSelected, setIsSelected] = useState(true);
+    // const [modalData, setModalData] = useState(null);
 
     useEffect(() => {
         getRealtyCardData(realtyId);
+        // getBillTemplate(realtyId, 'startToCreate');
     }, []);
     console.log('got realty card data', cardData, isFetching);
 
@@ -110,11 +112,13 @@ const RealtyCard = props => {
     const onStartToCreateBillTemplate = () => {
         getBillTemplate(realtyId, 'startToCreate');
         setIsVisible(true);
+        setIsSelected(true);
     };
 
     const onCreatedBillTemplate = e => {
         getBillTemplate(e.id, 'created');
         setIsVisible(true);
+        setIsSelected(false);
     };
 
     // const onOpenBillTemplate = () => {
@@ -263,8 +267,13 @@ const RealtyCard = props => {
                 </Row>
             )}
             {billData && (
-              <Modal visible={isVisible} onCancel={onCloseBillTemplate} footer={null} width={1486} style={{ borderRadius: '20px' }}>
-                <BillTemplate billData={billData} onBillSave={onBillSave} />
+              <Modal
+                  visible={isVisible}
+                  onCancel={onCloseBillTemplate}
+                  footer={null} width={1486}
+                  style={{ borderRadius: '20px' }}
+              >
+                <BillTemplate billData={billData} onBillSave={onBillSave} isSelected={isSelected} />
               </Modal>
             )}
             <div className="header">
@@ -282,8 +291,8 @@ const mapStateToProps = state => ({
     isFetching: state.realtyCard.isFetching,
     isDataProcessing: state.realtyCard.isDataProcessing,
     cardData: state.realtyCard.data,
-    billData: state.realtyCard.bill,
-    modalViewData: state.modalReview.modalReviewData
+    // billData: state.realtyCard.bill,
+    billData: state.billTemplate.billData,
 });
 
 const mapDispatchToProps = {

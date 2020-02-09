@@ -1,5 +1,6 @@
 /* eslint no-mixed-operators: "off" */
 import realtyCardTypes from '../types/realtyCard';
+import {BILL_TEMPLATE_SUCCESS} from "../types/billTemplateTypes";
 import { showNotification } from './errors';
 import { errorCodes } from '../../constants/errorMessages';
 
@@ -9,6 +10,7 @@ import {
   getBillTemplateForRealtyCardAPI,
   saveBillForRealtyCardAPI,
 } from '../../api';
+import billTemplate from "../reducers/billTemplate";
 
 export const getRealtyCardData = realtyId => {
   return async dispatch => {
@@ -124,6 +126,11 @@ export const saveBillForRealtyCard = bill => {
 
     dispatch({
       type: realtyCardTypes.BILL_CLOSED,
+    });
+
+    dispatch({
+      type: BILL_TEMPLATE_SUCCESS,
+      payload: response.data.result
     });
     console.warn('getRealtyCardData >>> ', bill.appartment_Id);
     dispatch(getRealtyCardData(bill.appartment_Id));

@@ -1,5 +1,5 @@
 import * as billTemplateTypes from "../types/billTemplateTypes";
-import {getBillTemplateForRealtyCardAPI, requestAdmin} from "../../api";
+import {getBillTemplateForRealtyCardAPI, getCreatedBillTemplateForRealtyCardAPI, requestAdmin} from "../../api";
 import {showNotification} from "./errors";
 import {errorCodes} from "../../constants/errorMessages";
 import {MODAL_REVIEW_REQUEST_FAILURE} from "../types/modalReview";
