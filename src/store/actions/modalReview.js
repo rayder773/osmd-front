@@ -19,7 +19,7 @@ export function getModalReviewData(id) {
         dispatch({type: MODAL_REVIEW_REQUEST, payload: {id}});
 
         let payload = [];
-        const response = await requestAdmin(getServiceValueDataAPI, {id}); //TODO Для разных модалок разные методы
+        const response = await requestAdmin(getServiceValueDataAPI, {id});
 
         if (!response || response.error) {
             // if response.code is <some value> ... then type = errorTypes.NO_RESPONSE!!!

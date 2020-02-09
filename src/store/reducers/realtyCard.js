@@ -29,20 +29,7 @@ export default function(state = initialState, action) {
         isDataProcessing: action.payload === undefined ? true : action.payload,
       };
     }
-    case realtyCardTypes.GOT_BILL_TEMPLATE: {
-      return {
-        ...state,
-        bill: action.payload,
-        isDataProcessing: false,
-      };
-    }
-    case realtyCardTypes.BILL_CLOSED: {
-      return {
-        ...state,
-        // bill: null,
-        isDataProcessing: false,
-      };
-    }
+
     default:
       return state;
   }
